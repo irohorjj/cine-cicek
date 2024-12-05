@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serkan Çiçek'in Favorileri - CINE-ÇİÇEK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/favorites.css">
+</head>
+<body>
+    <!-- Intro Animation -->
+    <div class="intro-overlay">
+        <div class="intro-text">E.Ç.</div>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="background-animation"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">CINE-ÇİÇEK</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Ana Sayfa</a>
+                <a href="/serkan-favorites" class="nav-link">Serkan Çiçek'in Favorileri</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="favorites-main">
+        <h1 class="favorites-title">Serkan Çiçek'in Favorileri</h1>
+        
+        <div class="movies-grid">
+            <% favorites.forEach(movie => { %>
+                <div class="movie-card fade-in">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="<%= movie.image %>" alt="<%= movie.title %>" class="movie-poster">
+                        </div>
+                        <div class="card-back">
+                            <h3 class="movie-title"><%= movie.title %></h3>
+                            <div class="movie-meta">
+                                <span><%= movie.year %></span>
+                                <span><%= movie.duration %></span>
+                                <span>⭐ <%= movie.rating %></span>
+                            </div>
+                            <p class="movie-description"><%= movie.description %></p>
+                            <div class="platform-links">
+                                <% if (movie.platforms.netflix) { %>
+                                    <a href="<%= movie.platforms.netflix %>" class="platform-link netflix" target="_blank">Netflix</a>
+                                <% } %>
+                                <% if (movie.platforms.amazon) { %>
+                                    <a href="<%= movie.platforms.amazon %>" class="platform-link amazon" target="_blank">Amazon</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+
+    <script src="/js/favorites.js"></script>
+</body>
+</html>

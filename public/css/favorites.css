@@ -1,0 +1,157 @@
+/* Intro Animation */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 3s forwards;
+}
+
+.intro-text {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    opacity: 0;
+    animation: textReveal 2s forwards;
+}
+
+@keyframes fadeOut {
+    0%, 80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes textReveal {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Main Content */
+.favorites-main {
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+.favorites-title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    animation: titleFloat 3s ease-in-out infinite;
+}
+
+@keyframes titleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Card Animations */
+.movie-card {
+    perspective: 1000px;
+    background: transparent;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.movie-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-front {
+    background: var(--card-bg);
+}
+
+.card-back {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    transform: rotateY(180deg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.movie-description {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Floating Animation for Cards */
+.movie-card {
+    animation: cardFloat 6s ease-in-out infinite;
+    animation-delay: calc(var(--card-index) * 0.2s);
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Platform Links Animation */
+.platform-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.platform-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.platform-link:hover::before {
+    left: 100%;
+}
+
+/* Background Animation */
+.background-animation {
+    background: linear-gradient(45deg, #000000, #1a1a1a, #2a2a2a);
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .intro-text {
+        font-size: 2.5rem;
+    }
+
+    .favorites-title {
+        font-size: 2.5rem;
+    }
+}

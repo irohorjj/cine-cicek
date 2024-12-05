@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINE-ÇİÇEK - Modern Film Platformu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Animasyonlu Arka Plan -->
+    <div class="background-animation"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">CINE-ÇİÇEK</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Ana Sayfa</a>
+                <a href="/serkan-favorites" class="nav-link">Serkan Çiçek'in Favorileri</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1 class="hero-title">Sinemanın En İyileri</h1>
+            <p>Dünya sinemasının en seçkin ve popüler filmleri bir tıkla karşınızda!</p>
+        </div>
+    </section>
+
+    <!-- Yeni Filmler -->
+    <section class="movies-section">
+        <h2 class="section-title">Yeni Filmler</h2>
+        <div class="movies-grid">
+            <% newMovies.forEach(movie => { %>
+                <div class="movie-card fade-in">
+                    <img src="<%= movie.image %>" alt="<%= movie.title %>" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title"><%= movie.title %></h3>
+                        <div class="movie-meta">
+                            <span><%= movie.year %></span>
+                            <span><%= movie.duration %></span>
+                            <span>⭐ <%= movie.rating %></span>
+                        </div>
+                        <div class="platform-links">
+                            <% if (movie.platforms.netflix) { %>
+                                <a href="<%= movie.platforms.netflix %>" class="platform-link netflix" target="_blank">Netflix</a>
+                            <% } %>
+                            <% if (movie.platforms.amazon) { %>
+                                <a href="<%= movie.platforms.amazon %>" class="platform-link amazon" target="_blank">Amazon</a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+
+    <!-- Trailer Modal -->
+    <div class="modal-overlay"></div>
+    <div class="trailer-modal">
+        <iframe width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
